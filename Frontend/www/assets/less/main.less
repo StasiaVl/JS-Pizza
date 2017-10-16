@@ -1,3 +1,56 @@
 @mainColor: blue;
 
 @import "pizza/pizza-card";
+
+@RightPanelWidth: 300px;
+@DopPanelWidth: 80px;
+
+.center-item{
+  padding-right: @RightPanelWidth;
+}
+
+.right-panel{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: @RightPanelWidth;
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+}
+
+.right-panel-upper{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: @RightPanelWidth;
+  height: @DopPanelWidth;
+  background-color: white;
+}
+
+.right-panel-center{
+  padding-top: @DopPanelWidth ;
+  padding-bottom: @DopPanelWidth* 1.5;
+  width: @RightPanelWidth;
+  height: 100%;
+  background-color: red;
+  overflow: scroll;
+}
+
+.right-panel-bottom{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: @RightPanelWidth;
+  height: @DopPanelWidth * 1.5;
+  background-color: white;
+}
+
+.upper-plashka{
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(51,51,51,0.8);
+  width: 100%;
+  height: @DopPanelWidth;
+  padding-right: @DopPanelWidth;
+}
