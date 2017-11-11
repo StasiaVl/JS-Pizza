@@ -17,6 +17,15 @@
 <body>
 <div id="cart"></div>
 <div class="center-item container">
+    <h2 class="pizza-title">Усі піци <span class="orange-circle">3</span></h2>
+    <div class="all-types-wrap">
+        <button class="btn btn-warning ">Усі</button>
+        <button class="btn btn-default btn-type">М'ясні</button>
+        <button class="btn btn-default btn-type">З ананасами</button>
+        <button class="btn btn-default btn-type">З грибами</button>
+        <button class="btn btn-default btn-type">Вега</button>
+        <button class="btn btn-default btn-type">Морські</button>
+    </div>
     <div class="row" id="pizza_list">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail pizza-card">
@@ -69,42 +78,35 @@
     <div class="upper-panel">
         <div class="upper-badge">
             PIZZA KMA
+            <img src="assets/images/discount.svg" class="badge-end-up">
         </div>
         <div class="upper-panel-upper-row">
-            0 800 555 35 35
-            <button class="btn active button-upper" data-toggle="button" type="button" aria-pressed="true">
+            8 800 555 35 35
+            <span class="upper-row-text visible-md-inline visible-lg-inline">Безкоштовна доставка 24/7</span>
+            <button class="btn btn-warning active button-upper" data-toggle="button" type="button" aria-pressed="true">
                 Ввійти
             </button>
         </div>
+        <div class="upper-panel-lower-row">
+            Піца
+        </div>
     </div>
     <div class="lower-badge">
-        Цього тижня знижка на все -20%!
+        Цього тижня на все -20%!
+        <img src="assets/images/discount.svg" class="badge-end">
     </div>
 </div>
 <div class="right-panel">
     <div class="right-panel-center">
         <img src="assets/images/photo_2017-10-16_23-18-25.jpg">
-    <h1>AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAA
-        a
-    </h1></div>
-    <div class="right-panel-upper"></div>
-
-    <div class="right-panel-bottom"></div>
+    <h4 class="dop-text">Пусто в холодильнику!</h4><h4 class="dop-text">Простіше подзвонити, аніж готувати!</h4></div>
+    <div class="right-panel-upper">
+        <span class="order">Замовлення <span class="orange-circle">0</span>
+            <button class="order-btn btn btn-default">Очистити замовлення</button></span>
+    </div>
+    <div class="right-panel-bottom">
+        <button type="button" class="btn-order btn btn-lg btn-warning" disabled>Замовити</button>
+    </div>
 </div>
 
 <!-- jQuery JavaScript -->

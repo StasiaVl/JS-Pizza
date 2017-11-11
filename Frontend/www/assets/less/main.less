@@ -1,25 +1,34 @@
-@mainColor: blue;
-
 @import "pizza/pizza-card";
 
 @RightPanelWidth: 300px;
 @DopPanelWidth: 80px;
-@MainColor: chocolate;
+@mainColor: #ea862e;
+@backGroundColor: #fffff0;
 
-.center-item{
-  padding-right: @RightPanelWidth;
+body{
+  background-color: @backGroundColor;
+}
+.dop-text{
+  font-size: 15px;
+  text-align: center;
 }
 
-.right-panel{
+.center-item {
+  padding-top: @DopPanelWidth;
+  padding-right: @RightPanelWidth;
+  min-width: @RightPanelWidth;
+}
+
+.right-panel {
   position: fixed;
   top: 0;
   right: 0;
   width: @RightPanelWidth;
   height: 100%;
-  background-color: lightgoldenrodyellow;
+  box-shadow: rgba(0,0,0,.2) -3px 3px 10px;
 }
 
-.right-panel-upper{
+.right-panel-upper {
   position: absolute;
   top: 0;
   right: 0;
@@ -28,30 +37,83 @@
   background-color: white;
 }
 
-.right-panel-center{
-  padding-top: @DopPanelWidth ;
+.order{
+  position: absolute;
+  top: 25px;
+  left: 15px;
+  font-weight: 700;
+  font-size: 20px;
+
+}
+.order-btn{
+  border: hidden;
+  font-size: 9px;
+  color: #585858;
+}
+
+.btn-order{
+  margin: 30px;
+  height: auto;
+  width: @RightPanelWidth - 60px;
+}
+
+.right-panel-center {
+  padding-top: @DopPanelWidth;
   padding-bottom: @DopPanelWidth* 1.5;
   width: @RightPanelWidth;
   height: 100%;
-  background-color: red;
+  background-color: #f2f2f2;
   overflow-y: scroll;
 }
 
-img{
-  height: @RightPanelWidth;
-  width: @RightPanelWidth;
+.pizza-title{
+  text-align: center;
 }
 
-.right-panel-bottom{
+.orange-circle{
+  background-color: @mainColor;
+  border-radius: 100%;
+  color: white;
+  padding-left:5px;
+  padding-right: 5px;
+  font-size: 14px;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.all-types-wrap{
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.btn-type{
+  border: hidden;
+  color: @mainColor;
+  background-color: @backGroundColor;
+}
+.btn-type:hover{
+  color: @mainColor;
+  background-color: @backGroundColor;
+}
+
+img {
+  height: @RightPanelWidth;
+  width: @RightPanelWidth * 0.9;
+}
+
+.right-panel-bottom {
   position: absolute;
   bottom: 0;
   right: 0;
   width: @RightPanelWidth;
-  height: @DopPanelWidth * 1.5;
+  height: auto;
   background-color: white;
 }
 
-.upper-panel{
+.upper-panel {
   position: fixed;
   top: 0;
   right: 0;
@@ -59,55 +121,104 @@ img{
   width: 100%;
   height: @DopPanelWidth;
   padding-right: @RightPanelWidth + 20px;
-  padding-left: @DopPanelWidth * 1.2 + 30px ;
+  padding-left: @DopPanelWidth * 1.2 + 30px;
 }
 
-.upper-panel-upper-row{
+.upper-panel-upper-row {
   position: relative;
   height: @DopPanelWidth /2;
   width: 100%;
   border-bottom: 1px solid gray;
-  color: gray;
+  color: #c5c5c5;
   padding: 10px;
+  padding-top: 8px;
+  font-size: 20px;
+}
+@media(max-width: 660px){
+  .upper-panel-upper-row{
+    font-size: 15px;
+  }
+}
+.upper-row-text {
+  height: @DopPanelWidth /2;
+  color: #a7a7a7;
+  padding: 10px;
+  padding-top: 8px;
+  padding-left: 28px;
+  font-size: 14px;
+}
+
+.upper-panel-lower-row {
+  position: relative;
+  height: @DopPanelWidth /2;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  padding-top: 8px;
   font-size: 18px;
 }
 
-.button-upper{
+.button-upper {
   color: white;
-  background-color: @MainColor;
   position: absolute;
   top: 5px;
   right: 0;
-  width:auto;
+  width: auto;
   height: auto;
   padding: 5px;
   font-size: 15px;
 }
 
-.upper-badge{
+.upper-badge {
   position: absolute;
   left: 15px;
   top: 0;
   width: @DopPanelWidth * 1.2;
   height: @DopPanelWidth;
   color: white;
-  background-color: @MainColor;
+  background-color: @mainColor;
+  border-left: 1px solid #d16200;
+  border-right: 1px solid #d16200;
   font-size: 20px;
+  font-weight: 500;
   padding: 15px;
   text-align: center;
 }
 
-.lower-badge{
+.lower-badge {
   position: fixed;
   left: 15px;
   bottom: 0;
   width: @DopPanelWidth * 1.2;
-  height: @DopPanelWidth * 1.8;
+  height: @DopPanelWidth * 1.5;
   color: white;
-  background-color: @MainColor;
+  background-color: @mainColor;
+  border-left: 1px solid #d16200;
+  border-right: 1px solid #d16200;
   font-size: 18px;
+  font-weight: 700;
   padding: 15px;
+  padding-top: 10px;
   text-align: center;
+}
+.badge-end{
+  width: inherit;
+  height: 11px;
+  top: -11px;
+  left: -1px;
+  padding: 0!important;
+  margin: 0!important;
+  position: absolute;
+}
+.badge-end-up{
+  width: inherit;
+  height: 11px;
+  bottom: -11px;
+  left: -1px;
+  transform: scaleY(-1);
+  padding: 0!important;
+  margin: 0!important;
+  position: absolute;
 }
 
 
