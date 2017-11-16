@@ -1,4 +1,5 @@
 @import "pizza/pizza-card";
+@import "pizza/cart-pizza-card";
 
 @RightPanelWidth: 300px;
 @DopPanelWidth: 80px;
@@ -10,6 +11,7 @@ body{
   background-color: @backGroundColor;
 }
 .dop-text{
+  padding: 20px;
   font-size: 15px;
   text-align: center;
 }
@@ -64,7 +66,8 @@ body{
   width: @RightPanelWidth;
   height: 100%;
   background-color: #f2f2f2;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .pizza-title{
@@ -100,9 +103,10 @@ body{
   background-color: @backGroundColor;
 }
 
-img {
-  height: @RightPanelWidth;
-  width: @RightPanelWidth * 0.9;
+.btn-warning{
+  background-image: linear-gradient(to bottom,#f0ad4e 0,#eb9316 100%);
+  background-repeat: repeat-x;
+  border-color: #e38d13;
 }
 
 .right-panel-bottom {
@@ -160,13 +164,14 @@ img {
 }
 
 .button-upper {
-  color: white;
   position: absolute;
-  top: 5px;
+  top: 4px;
   right: 0;
   width: auto;
   height: auto;
   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 15px;
 }
 

@@ -186,7 +186,7 @@ var ejs = require('ejs');
 
 exports.PizzaMenu_OneItem = ejs.compile("<%\r\n\r\nfunction getIngredientsArray(pizza) {\r\n    //Отримує вміст піци\r\n    var content = pizza.content;\r\n    var result = [];\r\n\r\n    //Object.keys повертає масив ключів в об’єкті JavaScript\r\n\r\n    Object.keys(content).forEach(function(key){\r\n\r\n        //a.concat(b) створює спільний масив із масивів a та b\r\n        result = result.concat(content[key]);\r\n    });\r\n\r\n    return result;\r\n}\r\n\r\n   %>\r\n<div class=\"col-md-6 col-lg-4 pizza-card\">\r\n    <div class=\"thumbnail\">\r\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\r\n\r\n        <% if(pizza.is_new) { %>\r\n        <span class=\"label label-danger\">Нова</span>\r\n        <% } else if(pizza.is_popular) {%>\r\n        <span class=\"label label-success\">Популярна</span>\r\n        <% } %>\r\n\r\n        <div class=\"caption\">\r\n            <span class=\"title\"><%= pizza.title %></span>\r\n            <div class=\"type\"><%= pizza.type %></div>\r\n            <div class=\"description\">\r\n                <%= getIngredientsArray(pizza).join(\", \") %>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\r\n        <% if(pizza.small_size) { %>\r\n        <button class=\"btn btn-warning buy-small\">Купити</button>\r\n        <% } %>\r\n        <% if(pizza.big_size) { %>\r\n        <button class=\"btn btn-warning buy-big\">Купити</button>\r\n        <% } %>\r\n        <!--<button class=\"btn btn-warning buy-big\">Купити велику</button>-->\r\n    </div>\r\n</div>");
 
-exports.PizzaCart_OneItem = ejs.compile("<div>\r\n    <%= pizza.title %> (<%= size %>)\r\n    <div>Ціна: <%= pizza[size].price %> грн.</div>\r\n    <div>\r\n        <button class=\"btn btn-danger minus\">-</button>\r\n        <span class=\"label label-default\"><%= quantity %></span>\r\n        <button class=\"btn btn-success plus\">+</button>\r\n    </div>\r\n</div>");
+exports.PizzaCart_OneItem = ejs.compile("<div class=\"pizza-in-cart\">\r\n    <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\">\r\n    <div class=\"title\"><%= pizza.title %> (<%= size %>)</div>\r\n    <div><%= pizza[size].price %> грн.</div>\r\n    <div>\r\n        <button class=\"btn btn-danger minus\">-</button>\r\n        <span class=\"label label-default\"><%= quantity %></span>\r\n        <button class=\"btn btn-success plus\">+</button>\r\n        <button class=\"btn btn-default delete\">x</button>\r\n    </div>\r\n</div>");
 
 },{"ejs":7}],3:[function(require,module,exports){
 /**
@@ -224,13 +224,17 @@ var $cart = $("#cart");
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
-
-    //Приклад реалізації, можна робити будь-яким іншим способом
-    Cart.push({
+    var cart_item = {
         pizza: pizza,
         size: size,
         quantity: 1
-    });
+    };
+    //Приклад реалізації, можна робити будь-яким іншим способом
+    if (getCertainPizzaInCart(cart_item)){
+        alert("Jest");
+        cart_item.quantity += 1;
+    }else
+        Cart.push(cart_item);
 
     //Оновити вміст кошика на сторінці
     updateCart();
@@ -239,7 +243,7 @@ function addToCart(pizza, size) {
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
-
+    Cart.splice(Cart.indexOf(cart_item),1);
     //Після видалення оновити відображення
     updateCart();
 }
@@ -255,6 +259,9 @@ function initialiseCart() {
 function getPizzaInCart() {
     //Повертає піци які зберігаються в кошику
     return Cart;
+}
+function getCertainPizzaInCart(cart_item) {
+    return Cart.indexOf(cart_item) > -1;
 }
 
 function updateCart() {
@@ -274,6 +281,21 @@ function updateCart() {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
 
+            //Оновлюємо відображення
+            updateCart();
+        });
+        $node.find(".minus").click(function(){
+            //Збільшуємо кількість замовлених піц
+            cart_item.quantity -= 1;
+            if(cart_item.quantity === 0){
+                removeFromCart(cart_item);
+            }
+
+            //Оновлюємо відображення
+            updateCart();
+        });
+        $node.find(".delete").click(function(){
+            removeFromCart(cart_item);
             //Оновлюємо відображення
             updateCart();
         });
