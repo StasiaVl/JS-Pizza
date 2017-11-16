@@ -16,14 +16,16 @@
 </head>
 <body>
 <div class="center-item container">
-    <h2 class="pizza-title">Усі піци <span class="orange-circle">8</span></h2>
+    <h2 class="pizza-title"><span id="pizza-title">Усі піци</span><span class="orange-circle" id="counter">8</span></h2>
     <div class="all-types-wrap">
-        <button class="btn btn-warning ">Усі</button>
-        <button class="btn btn-default btn-type">М'ясні</button>
-        <button class="btn btn-default btn-type">З ананасами</button>
-        <button class="btn btn-default btn-type">З грибами</button>
-        <button class="btn btn-default btn-type">Вега</button>
-        <button class="btn btn-default btn-type">Морські</button>
+        <ul class="nav nav-pills">
+            <li role="presentation" id="filter-all" class="active"><a href="#">Усі</a></li>
+            <li role="presentation" id="filter-meat" ><a href="#">М'ясні</a></li>
+            <li role="presentation" id="filter-pineapple"><a href="#">З ананасами</a></li>
+            <li role="presentation" id="filter-mushrooms"><a href="#">З грибами</a></li>
+            <li role="presentation" id="filter-vega"><a href="#">Вега</a></li>
+            <li role="presentation" id="filter-fish"><a href="#">Морські</a></li>
+        </ul>
     </div>
     <div class="row" id="pizza_list">
 

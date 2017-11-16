@@ -12,7 +12,7 @@ var pizza_info = [
             meat: ['балик', 'салямі'],
             chicken: ['курка'],
             cheese: ['сир моцарела', 'сир рокфор'],
-            pineapple: ['ананаси'],
+            pineapple: 'ананаси',
             additional: ['томатна паста', 'петрушка']
         },
         small_size:{
@@ -37,7 +37,7 @@ var pizza_info = [
         content: {
             meat: ['мисливські ковбаски', 'папероні', 'шинка'],
             cheese: ['сир домашній'],
-            mushroom: ['шампінйони'],
+            mushroom: 'шампінйони',
             additional: ['петрушка', 'оливки']
         },
         small_size:{
@@ -60,7 +60,7 @@ var pizza_info = [
         content: {
             meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарела'],
-            pineapple: ['ананаси'],
+            pineapple: 'ананаси',
             additional: ['кукурудза', 'петрушка', 'соус томатний']
         },
         small_size:{
@@ -82,7 +82,7 @@ var pizza_info = [
         content: {
             meat: ['шинка', 'салямі'],
             cheese: ['сир моцарелла'],
-            mushroom: ['шампінйони'],
+            mushroom: 'шампінйони',
             additional: ['перець болгарський',  'соус томатний']
         },
         small_size:{
@@ -120,8 +120,8 @@ var pizza_info = [
         content: {
             meat: ['ковбаски'],
             cheese: ['сир моцарела'],
-            mushroom: ['шампінйони'],
-            pineapple: ['ананаси'],
+            mushroom: 'шампінйони',
+            pineapple: 'ананаси',
             additional: ['цибуля кримська', 'огірки квашені', 'соус гірчичний']
         },
         small_size:{
