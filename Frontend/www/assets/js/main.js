@@ -281,7 +281,29 @@ function removeFromCart(cart_item) {
 function initialiseCart() {
     //Фукнція віпрацьвуватиме при завантаженні сторінки
     //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-    //TODO: ...
+    Cart = [];
+    number = 0;
+    all_price = 0;
+
+    new_number = JSON.parse(localStorage.getItem('number'));
+    if (new_number)
+        number = new_number;
+
+    new_price = JSON.parse(localStorage.getItem('price'));
+    if (new_price)
+        all_price = new_price;
+
+    var saved_orders = JSON.parse(localStorage.getItem('orders'));
+    if(number > 0){
+        Cart = saved_orders;
+        $order.find(".dop-text").text("");
+        $order.find(".btn-order").prop("disabled", false);
+        $order.find(".sum-of-the-order").show();
+    }else{
+        $order.find(".dop-text").text("Простіше подзвонити, аніж готувати!");
+        $order.find(".btn-order").prop("disabled", true);
+        $order.find(".sum-of-the-order").hide();
+    }
 
     updateCart();
 }
@@ -297,7 +319,6 @@ function updateCart() {
 
     //Очищаємо старі піци в кошику
     $cart.html("");
-
 
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
@@ -347,7 +368,13 @@ function updateCart() {
         $cart.append($node);
     }
 
-    $order.find(".sum").html(all_price +"грн.");
+    localStorage.setItem('orders', JSON.stringify(Cart));
+    localStorage.setItem('number', JSON.stringify(number));
+    localStorage.setItem('price', JSON.stringify(all_price));
+
+    $order.find(".sum").html(all_price +" грн");
+
+    $order.find(".orange-circle").text(number);
 
     Cart.forEach(showOnePizzaInCart);
 
