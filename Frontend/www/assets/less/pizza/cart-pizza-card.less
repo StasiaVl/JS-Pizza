@@ -1,15 +1,19 @@
-@height: 100px;
+@height: 125px;
 
 .pizza-in-cart {
   position: relative;
   width: @RightPanelWidth;
   height: @height;
+  padding: 20px;
+  border-bottom: 1px solid lightgrey;
 
   img {
+    position: absolute;
+    right: -48px;
+    top: 15px;
     border-radius: 50%;
-    float: right;
-    height: 96px;
-    width: 96px;
+    max-height: 96px;
+    max-width: 96px;
   }
 
   .title{
@@ -17,12 +21,25 @@
     font-size: 20px;
   }
 
+  .price{
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .quantity{
+    color: black;
+    font-weight: 600;
+    background-color: inherit;
+    font-size: 100%;
+  }
+
   .btn{
     border-radius: 50%;
     font-weight: 700;
     font-size: 18px;
-    width: 36px;
-    height: 36px;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
   }
 
   .delete{
