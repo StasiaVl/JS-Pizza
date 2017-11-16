@@ -230,15 +230,21 @@ function addToCart(pizza, size) {
         quantity: 1
     };
     //Приклад реалізації, можна робити будь-яким іншим способом
-    if (getCertainPizzaInCart(cart_item)){
-        alert("Jest");
-        cart_item.quantity += 1;
-    }else
+
+    function contains(cart_item, index, array) {
+        if (cart_item.pizza === pizza && cart_item.size === size){
+            cart_item.quantity += 1;
+            return true;
+        }else return false;
+    }
+
+    if (!Cart.some(contains))
         Cart.push(cart_item);
 
     //Оновити вміст кошика на сторінці
     updateCart();
 }
+
 
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
