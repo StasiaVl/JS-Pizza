@@ -239,6 +239,10 @@ $order.find(".order-btn").click(function () {
     updateCart();
 });
 
+$order.find(".btn-order").click(function () {
+    location.href="http://localhost:5050/order.html";
+});
+
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
     var cart_item = {
