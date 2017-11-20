@@ -1,5 +1,10 @@
+<%  var pizzaSize;
+    if (size === "small_size") pizzaSize = "Мала";
+    else pizzaSize = "Велика";
+    %>
+
 <div class="pizza-in-cart">
-    <div class="title"><%= pizza.title %> (<%= size %>)</div>
+    <div class="title"><%= pizza.title %> (<%= pizzaSize %>)</div>
     <div>
         <div class="price"><%= pizza[size].price %> грн.</div>
         <button class="btn btn-danger minus">-</button>
