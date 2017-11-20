@@ -1,5 +1,46 @@
 <% include common/header.ejs%>
 <% include common/upperPanel.ejs%>
 
+<div class="left-panel">
+    <div class="contact-form">
+        <h3 class="description">
+            1. Контактні дані
+        </h3>
+        <div>
+            <div class="col-md-7">
+                <form class="form-horizontal">
+                    <div class="form-group name-group">
+                        <label class="col-sm-2">Ім'я</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="user-name" placeholder="Ім'я Прізвище">
+
+                        </div>
+                    </div>
+                    <div class="form-group phone-group">
+                        <label class="col-sm-2">Телефон</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" id="user-phone" placeholder="Ваш номер">
+
+                        </div>
+                    </div>
+                    <div class="form-group address-group">
+                        <label class="col-sm-2">Адреса</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" id="user-address" placeholder="Адреса">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5 order-info">
+                <div class="info">
+                    <h4>Інформація про замовлення</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <% include common/rightPanel.ejs%>
 <% include common/footer.ejs%>
