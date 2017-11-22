@@ -6,28 +6,28 @@
         <h3 class="description">
             1. Контактні дані
         </h3>
-        <div>
+        <div style="height: 200px;">
             <div class="col-md-7">
                 <form class="form-horizontal">
-                    <div class="form-group name-group">
+                    <div class="form-group name-group has-success">
                         <label class="col-sm-2">Ім'я</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" id="user-name" placeholder="Ім'я Прізвище">
-
+                            <p class="name-help" style="font-weight: 600; color: darkred;">Введіть тільки ім'я без цифр</p>
                         </div>
                     </div>
-                    <div class="form-group phone-group">
+                    <div class="form-group phone-group has-success">
                         <label class="col-sm-2">Телефон</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="number" id="user-phone" placeholder="Ваш номер">
-
+                            <input class="form-control" type="number" id="user-phone" placeholder="0987654321">
+                            <p class="phone-help" style="font-weight: 600; color: darkred;">Номер повинен починатися з 380 або з 0</p>
                         </div>
                     </div>
-                    <div class="form-group address-group">
+                    <div class="form-group address-group has-success">
                         <label class="col-sm-2">Адреса</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" id="user-address" placeholder="Адреса">
-
+                            <p class="address-help" style="font-weight: 600; color: darkred;">Введіть адресу</p>
                         </div>
                     </div>
                 </form>
@@ -35,8 +35,23 @@
             <div class="col-md-5 order-info">
                 <div class="info">
                     <h4>Інформація про замовлення</h4>
-
+                    <p class="order-time">
+                        <b>Приблизний час доставки:</b> <span id="time">невідомий</span>
+                    </p>
+                    <p class="order-address">
+                        <b>Адреса доставки:</b> <span id="address">невідома</span>
+                    </p>
                 </div>
+            </div>
+        </div>
+        <div style="height: 80px">
+            <button class="btn btn-warning btn-block btn-next">
+                Далі
+            </button>
+        </div>
+        <div class="map">
+            <div id="googleMap">
+
             </div>
         </div>
     </div>

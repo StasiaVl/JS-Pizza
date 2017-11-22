@@ -5,10 +5,13 @@
 
 <div class="pizza-in-cart">
     <div class="title"><%= pizza.title %> (<%= pizzaSize %>)</div>
+    <div class="pizza-stats">
+
+    </div>
     <div>
         <div class="price"><%= pizza[size].price %> грн.</div>
         <button class="btn btn-danger minus">-</button>
-        <span class="label label-default quantity"><%= quantity %></span>
+        <span class="label label-default quantity"><%= quantity %> шт.</span>
         <button class="btn btn-success plus">+</button>
         <button class="btn btn-default delete">x</button>
     </div>

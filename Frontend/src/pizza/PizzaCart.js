@@ -3,6 +3,8 @@
  */
 var Templates = require('../Templates');
 
+var API = require("../API");
+
 //Перелік розмірів піци
 var PizzaSize = {
     Big: "big_size",
@@ -33,7 +35,10 @@ $order.find(".order-btn").click(function () {
 });
 
 $order.find(".btn-order").click(function () {
-    location.href="http://localhost:5050/order.html";
+    if ($(".pizza-title").html() !== undefined)
+        location.href="http://localhost:5050/order.html";
+    else
+        location.href="http://localhost:5050/";
 });
 
 function addToCart(pizza, size) {
@@ -123,6 +128,26 @@ function updateCart() {
 
         var $node = $(html_code);
 
+        if ($(".pizza-title").html() === undefined) {
+            $node.find(".plus").hide();
+            $node.find(".minus").hide();
+            $node.find(".delete").hide();
+
+            $btnOrder = $(".btn-order");
+            $btnOrder.removeClass("btn-warning");
+            $btnOrder.addClass("btn-default");
+            $btnOrder.html("Редагувати замовлення");
+        } else {
+            $node.find(".plus").show();
+            $node.find(".minus").show();
+            $node.find(".delete").show();
+
+            $btnOrder = $(".btn-order");
+            $btnOrder.removeClass("btn-default");
+            $btnOrder.addClass("btn-warning");
+            $btnOrder.html("Замовити");
+        }
+
         $node.find(".plus").click(function(){
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
@@ -177,6 +202,31 @@ function updateCart() {
 
 }
 
+function createOrder(callback){
+
+    API.createOrder({
+        name: "Name",
+        phone: "3800000000",
+        order: Cart
+    }, function(err, result){
+        if(err) {
+            return callback(err);
+        } else {
+            return callback(null, result);
+        }
+    });
+}
+
+$(".btn-order").click(function() {
+    createOrder(function(err, data) {
+        if (err) {
+            alert(err.toString());
+        }/* else {
+            alert("Success: "+JSON.stringify(data));
+        }*/
+    })
+});
+
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
 
@@ -184,3 +234,5 @@ exports.getPizzaInCart = getPizzaInCart;
 exports.initialiseCart = initialiseCart;
 
 exports.PizzaSize = PizzaSize;
+
+exports.createOrder = createOrder;
