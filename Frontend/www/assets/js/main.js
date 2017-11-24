@@ -246,7 +246,7 @@ function initialize() {
     //Тут починаємо працювати з картою
     var mapProp = {
         center: myPosition,
-        zoom: 12
+        zoom: 14
     };
     var html_element = document.getElementById("googleMap");
     var map = new google.maps.Map(html_element, mapProp);
@@ -463,7 +463,17 @@ $(function () {
                 if (err) {
                     alert(err.toString());
                 } else {
-                    //LiqPay here
+                    LiqPayCheckout.init({
+                        data: data.data,
+                        signature: data.signature,
+                        embedTo:	"#liqpay",
+                        mode:	"popup"	//	embed	||	popup
+                    }).on("liqpay.callback", function(data){
+                        console.log(data.status);
+                        console.log(data);
+                    }).on("liqpay.ready", function(data){ // ready
+                    }).on("liqpay.close",function(data){ //	close
+                    });
                     console.log("Order successful. Your money have been spent.\n" + JSON.stringify(data));
                 }
             });
@@ -679,8 +689,12 @@ function updateCart() {
 function createOrder(callback){
 
     API.createOrder({
-        name: "Name",
-        phone: "3800000000",
+        name: $("#user-name").val(),
+        phone: $("#user-phone").val(),
+        address: $("#user-address").val(),
+
+        price: parseInt($(".sum").text()),
+
         order: Cart
     }, function(err, result){
         if(err) {
@@ -695,9 +709,10 @@ $(".btn-order").click(function() {
     createOrder(function(err, data) {
         if (err) {
             alert(err.toString());
-        }/* else {
-            alert("Success: "+JSON.stringify(data));
-        }*/
+        } else {
+            console.log("Success: "+JSON.stringify(data));
+
+        }
     })
 });
 

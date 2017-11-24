@@ -228,9 +228,19 @@ $(function () {
         if (nameCheck && phoneNumberCheck && addressCheck) {
             PizzaCart.createOrder(function (err, data) {
                 if (err) {
-                    alert(err.toString());
+                    alert("Неможливо створити замовлення. " + err.toString());
                 } else {
-                    //LiqPay here
+                    LiqPayCheckout.init({
+                        data: data.data,
+                        signature: data.signature,
+                        embedTo:	"#liqpay",
+                        mode:	"popup"	//	embed	||	popup
+                    }).on("liqpay.callback", function(data){
+                        console.log(data.status);
+                        console.log(data);
+                    }).on("liqpay.ready", function(data){ // ready
+                    }).on("liqpay.close",function(data){ //	close
+                    });
                     console.log("Order successful. Your money have been spent.\n" + JSON.stringify(data));
                 }
             });

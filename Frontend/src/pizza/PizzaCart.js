@@ -205,8 +205,12 @@ function updateCart() {
 function createOrder(callback){
 
     API.createOrder({
-        name: "Name",
-        phone: "3800000000",
+        name: $("#user-name").val(),
+        phone: $("#user-phone").val(),
+        address: $("#user-address").val(),
+
+        price: parseInt($(".sum").text()),
+
         order: Cart
     }, function(err, result){
         if(err) {
@@ -216,16 +220,6 @@ function createOrder(callback){
         }
     });
 }
-
-$(".btn-order").click(function() {
-    createOrder(function(err, data) {
-        if (err) {
-            alert(err.toString());
-        }/* else {
-            alert("Success: "+JSON.stringify(data));
-        }*/
-    })
-});
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
