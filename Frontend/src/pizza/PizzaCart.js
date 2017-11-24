@@ -209,7 +209,7 @@ function createOrder(callback){
         phone: $("#user-phone").val(),
         address: $("#user-address").val(),
 
-        price: parseInt($(".sum").text()),
+        price: all_price,//parseInt($(".sum").text()),
 
         order: Cart
     }, function(err, result){
@@ -218,7 +218,7 @@ function createOrder(callback){
         } else {
             return callback(null, result);
         }
-    });
+    })
 }
 
 exports.removeFromCart = removeFromCart;

@@ -28,22 +28,22 @@ exports.createOrder = function(req, res) {
         return sha1.digest('base64');
     }
 
-    var LIQPAY_PUBLIC_KEY = i22916139463;
-    var LIQPAY_PRIVATE_KEY = rVejyppvxt3fzU29kyP5YirL9xQG7N5RHR1GnJjl;
+    //var LIQPAY_PUBLIC_KEY = i22916139463;
+    //var LIQPAY_PRIVATE_KEY = rVejyppvxt3fzU29kyP5YirL9xQG7N5RHR1GnJjl;
 
     var order = {
         version: 3,
-        public_key: LIQPAY_PUBLIC_KEY,
+        public_key: 'i22916139463',
         action: "pay",
         amount: order_info.price,
         currency: "UAH",
         description: order_description,
         order_id: Math.random(),
-            //!!!Важливо щоб було 1,	бо інакше візьмегроші!!!
+            //!!!Важливо щоб було 1, бо інакше візьме гроші!!!
         sandbox: 1
     };
     var data = base64(JSON.stringify(order));
-    var signature = sha1(LIQPAY_PRIVATE_KEY + data + LIQPAY_PRIVATE_KEY);
+    var signature = sha1('rVejyppvxt3fzU29kyP5YirL9xQG7N5RHR1GnJjl' + data + 'rVejyppvxt3fzU29kyP5YirL9xQG7N5RHR1GnJjl');
 
 
     res.send({

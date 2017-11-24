@@ -461,7 +461,7 @@ $(function () {
         if (nameCheck && phoneNumberCheck && addressCheck) {
             PizzaCart.createOrder(function (err, data) {
                 if (err) {
-                    alert(err.toString());
+                    alert("Неможливо створити замовлення. " + err.toString());
                 } else {
                     LiqPayCheckout.init({
                         data: data.data,
@@ -693,7 +693,7 @@ function createOrder(callback){
         phone: $("#user-phone").val(),
         address: $("#user-address").val(),
 
-        price: parseInt($(".sum").text()),
+        price: all_price,//parseInt($(".sum").text()),
 
         order: Cart
     }, function(err, result){
@@ -702,19 +702,8 @@ function createOrder(callback){
         } else {
             return callback(null, result);
         }
-    });
-}
-
-$(".btn-order").click(function() {
-    createOrder(function(err, data) {
-        if (err) {
-            alert(err.toString());
-        } else {
-            console.log("Success: "+JSON.stringify(data));
-
-        }
     })
-});
+}
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
